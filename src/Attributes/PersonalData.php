@@ -3,6 +3,7 @@
 namespace JeffersonGoncalves\UsPrivacy\Attributes;
 
 use Attribute;
+use JeffersonGoncalves\Privacy\Attributes\PersonalDataAttribute;
 use JeffersonGoncalves\UsPrivacy\Enums\AnonymizeStrategy;
 use JeffersonGoncalves\UsPrivacy\Enums\DataCategory;
 use JeffersonGoncalves\UsPrivacy\Enums\SensitiveType;
@@ -12,7 +13,7 @@ use JeffersonGoncalves\UsPrivacy\Enums\SensitiveType;
  * profiling flag the processing every state law lets consumers opt out of.
  */
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class PersonalData
+final class PersonalData extends PersonalDataAttribute
 {
     public function __construct(
         public string $column,
@@ -20,11 +21,13 @@ final class PersonalData
         public ?string $purpose = null,
         public ?SensitiveType $sensitiveType = null,
         public ?string $retention = null,
-        public AnonymizeStrategy $anonymize = AnonymizeStrategy::Nullify,
+        AnonymizeStrategy $anonymize = AnonymizeStrategy::Nullify,
         public bool $sold = false,
         public bool $targetedAdvertising = false,
         public bool $profiling = false,
-    ) {}
+    ) {
+        $this->anonymize = $anonymize;
+    }
 
     /**
      * @return array{column: string, category: string, purpose: string|null, sensitive_type: string|null, retention: string|null, anonymize: string, sold: bool, targeted_advertising: bool, profiling: bool}

@@ -159,6 +159,13 @@ php artisan us-privacy:k-anonymity "App\Models\Patient" zip birth_date --k=5 --s
 
 The command fails (exit code 1) when the data is below the target *k*, so it can run in CI or before a scheduled export.
 
+## Upgrading to 2.0
+
+2.0 runs on [laravel-privacy](https://github.com/jeffersongoncalves/laravel-privacy), the engine shared by the
+LGPD, GDPR, CCPA, US privacy and Quebec suites. The classes, config keys, tables, commands and events of this package
+keep their names: your code, config and data need no change. Suites installed side by side never see each other's
+events. If you extend a class of this package, it now inherits from its `JeffersonGoncalves\Privacy` base.
+
 ## Testing
 
 ```bash
