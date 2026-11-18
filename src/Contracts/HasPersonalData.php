@@ -2,9 +2,10 @@
 
 namespace JeffersonGoncalves\UsPrivacy\Contracts;
 
+use JeffersonGoncalves\Privacy\Contracts\HasPersonalData as BaseHasPersonalData;
 use JeffersonGoncalves\UsPrivacy\Attributes\PersonalData;
 
-interface HasPersonalData
+interface HasPersonalData extends BaseHasPersonalData
 {
     /**
      * @return list<PersonalData>
