@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0 - 2026-11-18
+
+### Breaking
+
+- The engine moves to [laravel-privacy](https://github.com/jeffersongoncalves/laravel-privacy), the base shared by the LGPD, GDPR, CCPA, US privacy and Quebec suites. Every class of this package keeps its name and now extends its `JeffersonGoncalves\Privacy` base. If you extend one of them, check your overrides.
+
+### Unchanged
+
+- Config keys, tables, migrations, commands, events and the `#[PersonalData]` declarations: apps need no change.
+
+### Added
+
+- Suites installed side by side (e.g. LGPD and GDPR) only see their own declarations and events.
+
 ## 1.0.0 - 2026-11-17
 
 First release of laravel-us-privacy, the core of a Laravel toolkit for the comprehensive privacy laws of 18 US states (Virginia, Colorado, Connecticut, Utah, Texas, Oregon, Montana, Iowa, Delaware, Nebraska, New Hampshire, New Jersey, Tennessee, Minnesota, Maryland, Indiana, Kentucky, Rhode Island).
